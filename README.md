@@ -1,6 +1,6 @@
 # Spring Boot Couchbase demo project
 
-Spring Boot Version: 2.2.1.RELEASE
+### Spring Boot Version: 2.2.1.RELEASE
 
 Create couchbase user and make sure username is same as bucket name.
 
