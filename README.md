@@ -4,6 +4,6 @@
 
 Create couchbase user and make sure username is same as bucket name.
 
-Update those details in applications-[profile].properties
+Update those details in application-dev.properties
 
 Start the spring boot app and go to http://localhost:8080/swagger-ui.html
