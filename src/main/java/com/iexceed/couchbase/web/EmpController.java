@@ -10,23 +10,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iexceed.couchbase.model.Employee;
-import com.iexceed.couchbase.repo.EmpRepo;
+import com.iexceed.couchbase.service.EmployeeService;
 
 @RestController
 @RequestMapping("api/v1/emp/")
 public class EmpController {
 
 	@Autowired
-	private EmpRepo empRepo;
+	private EmployeeService service;
 
 	@PostMapping("")
-	public Employee addProfile(@RequestBody Employee employee) {
-		return empRepo.save(employee);
+	public Employee save(@RequestBody Employee employee) {
+		return service.save(employee);
+	}
+
+	@PostMapping("addall")
+	public long saveAll(@RequestBody List<Employee> employees) {
+		return service.addAll(employees);
 	}
 
 	@GetMapping("")
 	public List<Employee> getAll() {
-		return (List<Employee>) empRepo.findAll();
+		return (List<Employee>) service.findAll();
+	}
+
+	@GetMapping("count")
+	public long count() {
+		return service.count();
+	}
+
+	@GetMapping("designation/{designation}")
+	public List<Employee> getByDesignation(String designation) {
+		return service.getByDesignation(designation);
+	}
+
+	@GetMapping("designation/count/{designation}")
+	public Long designationCount(String designation) {
+		return service.getEmployeesCountByDesignation(designation);
 	}
 
 }
